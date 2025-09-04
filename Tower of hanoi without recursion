@@ -9,7 +9,6 @@ void towerOfHanoiIterative(int num_of_disks) {
     int moves = pow(2, num_of_disks) - 1;
     char src = 'A', aux = 'B', dest = 'C';
 
-    // If number of disks is even, swap destination and auxiliary
     if (num_of_disks % 2 == 0) {
         char temp = dest;
         dest = aux;
