@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <math.h>
+
+void moveDisk(char from, char to, int disk) {
+    printf("Move disk %d from %c to %c\n", disk, from, to);
+}
+
+void towerOfHanoiIterative(int num_of_disks) {
+    int moves = pow(2, num_of_disks) - 1;
+    char src = 'A', aux = 'B', dest = 'C';
+
+    // If number of disks is even, swap destination and auxiliary
+    if (num_of_disks % 2 == 0) {
+        char temp = dest;
+        dest = aux;
+        aux = temp;
+    }
+
+    for (int i = 1; i <= moves; i++) {
+        if (i % 3 == 1)
+            moveDisk(src, dest, (i+1)/2);
+        else if (i % 3 == 2)
+            moveDisk(src, aux, (i+1)/2);
+        else
+            moveDisk(aux, dest, (i+1)/2);
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter number of disks: ");
+    scanf("%d", &n);
+    towerOfHanoiIterative(n);
+    return 0;
+}
